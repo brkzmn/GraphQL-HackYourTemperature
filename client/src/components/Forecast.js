@@ -1,14 +1,6 @@
 import React from "react";
-// import { gql } from "@apollo/client";
-// import Query from "express/lib/middleware/query";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql,
-} from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 //
 const FORECAST_QUERY = gql`
@@ -22,7 +14,7 @@ const FORECAST_QUERY = gql`
   }
 `;
 
-const Forecast = ({ cityName }) => {
+const Forecast = ({ cityName, setShowForecast }) => {
   const { loading, error, data } = useQuery(FORECAST_QUERY, {
     variables: { cityName },
   });
@@ -32,24 +24,25 @@ const Forecast = ({ cityName }) => {
     console.log(error);
     return <p>Error...! </p>;
   }
-  console.log(data);
-  const {
-    CityWeather: {
-      name,
-      main: { temp },
-    },
-  } = data;
-  console.log(name, temp, "namee");
+  console.log(data.CityWeather.name);
+  if (data.CityWeather.name !== null) {
+    const {
+      CityWeather: {
+        name,
+        main: { temp },
+      },
+    } = data;
 
-  return (
-    <div>
-      <h1>Forecast</h1>
-      <h2>{name}</h2>
-      <h2>{name}</h2>
-      <h2>{name}</h2>
-      <h2>{name}</h2>
-    </div>
-  );
+    return (
+      <div>
+        <h1>Forecast</h1>
+        <h2>{name}</h2>
+        <h2>{temp}</h2>
+      </div>
+    );
+  }
+
+  return <div>city not found</div>;
 };
 
 export default Forecast;
