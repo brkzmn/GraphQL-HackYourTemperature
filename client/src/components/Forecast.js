@@ -10,6 +10,9 @@ const FORECAST_QUERY = gql`
       main {
         temp
       }
+      weather {
+        main
+      }
     }
   }
 `;
@@ -34,6 +37,7 @@ const Forecast = ({ cityName, setShowForecast }) => {
         main: { temp },
       },
     } = data;
+    const weatherInfo = data.CityWeather.weather[0].main;
 
     const currentDate = new Date().toLocaleDateString("en-GB", {
       weekday: "long",
@@ -52,6 +56,7 @@ const Forecast = ({ cityName, setShowForecast }) => {
           Weather in {name} {temp}
           {"\u00b0"}
         </h2>
+        <h4>{weatherInfo}</h4>
       </div>
     );
   }
