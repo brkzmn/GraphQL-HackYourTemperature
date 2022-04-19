@@ -4,7 +4,6 @@ function Input({ cityName, setCityName }) {
   const handleChange = (e) => {
     e.preventDefault();
     setCityName(e.target.value);
-    console.log(e.target.value);
   };
   return (
     <div class="row">
