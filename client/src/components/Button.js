@@ -2,9 +2,9 @@ import React from "react";
 
 function Button({ setShowForecast }) {
   return (
-    <div>
+    <div className="btn-wrapper">
       <button
-        class="btn waves-effect waves-light"
+        className="btn waves-effect waves-light"
         type="submit"
         name="action"
         onClick={() => {
@@ -12,7 +12,7 @@ function Button({ setShowForecast }) {
         }}
       >
         Submit
-        <i class="material-icons right">cloud</i>
+        <i className="material-icons right">cloud</i>
       </button>
     </div>
   );

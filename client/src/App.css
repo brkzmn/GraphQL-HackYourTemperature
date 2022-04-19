@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.current-time {
+  font-size: 2rem;
+  color: red;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.App {
+  background-color: #242d6a;
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  margin: 0 0 9px 0;
+  padding: 40px;
+}
+
+.btn-wrapper {
+  width: fit-content;
+}

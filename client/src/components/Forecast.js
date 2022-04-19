@@ -19,10 +19,12 @@ const Forecast = ({ cityName, setShowForecast }) => {
     variables: { cityName },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return <h3>Loading...</h3>;
+  }
   if (error) {
     console.log(error);
-    return <p>Error...! </p>;
+    return <h3>Error...! {error}</h3>;
   }
   console.log(data.CityWeather.name);
   if (data.CityWeather.name !== null) {
@@ -33,16 +35,28 @@ const Forecast = ({ cityName, setShowForecast }) => {
       },
     } = data;
 
+    const currentDate = new Date().toLocaleDateString("en-GB", {
+      weekday: "long",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+    console.log(currentDate);
+
     return (
       <div>
         <h1>Forecast</h1>
-        <h2>{name}</h2>
-        <h2>{temp}</h2>
+        <time className="current-time">{currentDate}</time>
+
+        <h2>
+          Weather in {name} {temp}
+          {"\u00b0"}
+        </h2>
       </div>
     );
   }
 
-  return <div>city not found</div>;
+  return <h3>city not found</h3>;
 };
 
 export default Forecast;
