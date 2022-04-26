@@ -9,9 +9,15 @@ const FORECAST_QUERY = gql`
       name
       main {
         temp
+        humidity
       }
       weather {
         main
+        icon
+        description
+      }
+      wind {
+        speed
       }
     }
   }
@@ -31,13 +37,11 @@ const Forecast = ({ cityName, setShowForecast }) => {
   }
   console.log(data.CityWeather.name);
   if (data.CityWeather.name !== null) {
-    const {
-      CityWeather: {
-        name,
-        main: { temp },
-      },
-    } = data;
-    const weatherInfo = data.CityWeather.weather[0].main;
+    const main = data.CityWeather.main;
+    const weather = data.CityWeather.weather[0];
+    const wind = data.CityWeather.wind;
+
+    console.log(data.CityWeather);
 
     const currentDate = new Date().toLocaleDateString("en-GB", {
       weekday: "long",
@@ -53,10 +57,16 @@ const Forecast = ({ cityName, setShowForecast }) => {
         <time className="current-time">{currentDate}</time>
 
         <h2>
-          Weather in {name} {temp}
+          Weather in {data.CityWeather.name} {main.temp}
           {"\u00b0"}
         </h2>
-        <h4>{weatherInfo}</h4>
+        <h4>humidity {main.humidity} %</h4>
+        <img
+          src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+          alt="weather-icon"
+        />
+        <h4>main {weather.main}</h4>
+        <h4>description{weather.description}</h4>
       </div>
     );
   }

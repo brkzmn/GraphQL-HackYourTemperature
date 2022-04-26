@@ -10,11 +10,18 @@ import {
 import fetch from "node-fetch";
 
 // `https://api.openweathermap.org/data/2.5/weather?q=${}&units=metric&APPID=68b7cb8df654d99aa72ed9a77bd90cad`
+const windType = new GraphQLObjectType({
+  name: "wind",
+  fields: () => ({
+    speed: { type: GraphQLFloat },
+  }),
+});
 
 const weatherType = new GraphQLObjectType({
   name: "weather",
   fields: () => ({
     main: { type: GraphQLString },
+    description: { type: GraphQLString },
     icon: { type: GraphQLString },
   }),
 });
@@ -31,9 +38,9 @@ const CityWeatherType = new GraphQLObjectType({
   name: "CityWeather",
   fields: () => ({
     name: { type: GraphQLString },
-    cod: { type: GraphQLInt },
     main: { type: mainType },
     weather: { type: new GraphQLList(weatherType) },
+    wind: { type: windType },
   }),
 });
 

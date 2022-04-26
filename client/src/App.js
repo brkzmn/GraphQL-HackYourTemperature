@@ -1,5 +1,7 @@
 import Input from "./components/Input";
 import Button from "./components/Button";
+import { GrGraphQl } from "react-icons/gr";
+
 import "./App.css";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -20,6 +22,7 @@ function App() {
     <div className="App">
       <ApolloProvider client={client}>
         <h1>HackYourTemperature-GraphQL</h1>
+        <GrGraphQl className="logo" />
         <Input
           cityName={cityName}
           setCityName={setCityName}

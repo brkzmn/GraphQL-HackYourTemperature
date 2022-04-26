@@ -26,3 +26,8 @@ h1 {
 .btn-wrapper {
   width: fit-content;
 }
+
+.logo {
+  color: #db4094;
+  font-size: 4rem;
+}
