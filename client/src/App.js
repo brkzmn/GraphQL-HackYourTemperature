@@ -21,14 +21,20 @@ function App() {
   return (
     <div className="App">
       <ApolloProvider client={client}>
-        <h1>HackYourTemperature-GraphQL</h1>
-        <GrGraphQl className="logo" />
-        <Input
-          cityName={cityName}
-          setCityName={setCityName}
-          setShowForecast={setShowForecast}
-        />
-        <Button setShowForecast={setShowForecast} />
+        <div className="logo">
+          <h1 className="logo-title">HackYourTemperature-GraphQL</h1>
+          <GrGraphQl className="logo-icon" />
+        </div>
+
+        <div className={`row input-container ${showForecast ? "up" : "down"}`}>
+          <Input
+            cityName={cityName}
+            setCityName={setCityName}
+            setShowForecast={setShowForecast}
+          />
+          <Button setShowForecast={setShowForecast} />
+        </div>
+
         {showForecast && (
           <Forecast cityName={cityName} setShowForecast={setShowForecast} />
         )}

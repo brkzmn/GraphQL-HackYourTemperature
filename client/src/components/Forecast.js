@@ -52,7 +52,7 @@ const Forecast = ({ cityName, setShowForecast }) => {
     console.log(currentDate);
 
     return (
-      <div>
+      <div className={`forecast-container ${main.temp > 16 ? "warm" : "cold"}`}>
         <h1>Forecast</h1>
         <time className="current-time">{currentDate}</time>
 

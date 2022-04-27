@@ -11,11 +11,36 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-size: 16px;
 }
 .App {
-  background-color: #242d6a;
-  height: 100%;
-  width: 100%;
+  background: #076585; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #076585,
+    #fff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #076585,
+    #fff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  min-height: 100vh;
+  width: auto;
+}
+.warm {
+  background: rgba(254, 180, 123, 0.5);
+}
+.cold {
+  background: rgba(206, 211, 220, 0.5);
+}
+.forecast-container {
+  /* background: rgba(255, 255, 255, 0.1); */
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
+  width: 80%;
+  margin: auto;
+  border-radius: 50px;
 }
 
 h1 {
@@ -26,8 +51,39 @@ h1 {
 .btn-wrapper {
   width: fit-content;
 }
-
 .logo {
+  display: flex;
+}
+.logo-title {
+  display: inline;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.logo-icon {
   color: #db4094;
   font-size: 4rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 100%;
+}
+.btn {
+}
+.up {
+  background-color: grey;
+}
+
+.down {
+  background-color: yellow;
+}
+
+/* media-queries */
+@media (min-width: 600px) {
+  .logo-title {
+    width: 80%;
+    font-size: 2.7rem;
+  }
+  .logo-icon {
+    width: 20%;
+  }
 }
