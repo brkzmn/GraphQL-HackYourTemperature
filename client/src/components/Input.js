@@ -11,7 +11,6 @@ function Input({ cityName, setCityName, setShowForecast }) {
         onChange={(e) => {
           setCityName(e.target.value);
           setShowForecast(false);
-          console.log(cityName, "cityyyyname");
         }}
       />
       <label htmlFor="cityInput">Enter a city</label>

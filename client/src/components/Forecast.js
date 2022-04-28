@@ -40,22 +40,17 @@ const Forecast = ({ cityName, setShowForecast }) => {
     console.log(error);
     return <h3>Error...! {error}</h3>;
   }
-  console.log(data.CityWeather.name);
+
   if (data.CityWeather.name !== null) {
     const main = data.CityWeather.main;
     const weather = data.CityWeather.weather[0];
     const wind = data.CityWeather.wind;
-
-    console.log(data.CityWeather);
-
     const currentDate = new Date().toLocaleDateString("en-GB", {
       weekday: "long",
       year: "numeric",
       month: "short",
       day: "numeric",
     });
-    console.log(currentDate);
-    console.log(main);
 
     return (
       <div className={`forecast-container ${main.temp > 16 ? "warm" : "cold"}`}>

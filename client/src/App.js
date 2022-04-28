@@ -6,6 +6,7 @@ import "./App.css";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Forecast from "./components/Forecast";
+import Footer from "./components/Footer";
 import { useState } from "react";
 // import { set } from "express/lib/application";
 
@@ -41,6 +42,7 @@ function App() {
             <Forecast cityName={cityName} setShowForecast={setShowForecast} />
           )}
         </div>
+        <Footer />
       </ApolloProvider>
     </div>
   );
