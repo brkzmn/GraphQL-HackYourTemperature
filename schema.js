@@ -32,6 +32,7 @@ const mainType = new GraphQLObjectType({
     temp: { type: GraphQLFloat },
     humidity: { type: GraphQLInt },
     feels_like: { type: GraphQLFloat },
+    pressure: { type: GraphQLInt },
   }),
 });
 

@@ -3,10 +3,6 @@
   margin: 0;
 }
 
-.current-time {
-  font-size: 2rem;
-  color: red;
-}
 html,
 body {
   height: 100%;
@@ -95,7 +91,9 @@ h1 {
 .forecast-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .weather-icon {
@@ -120,6 +118,25 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   min-height: 90vh;
+}
+
+.detail-icon {
+  font-size: 2rem;
+}
+
+.details-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.detail-box {
+  width: 45%;
+  margin: 5px;
+}
+.current-time {
+  font-size: 1.5rem;
+}
+.degree-wrapper {
+  margin: auto;
 }
 /* media-queries */
 @media (min-width: 600px) {

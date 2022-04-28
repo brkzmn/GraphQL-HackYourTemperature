@@ -1,6 +1,9 @@
 import React from "react";
 
 import { useQuery, gql } from "@apollo/client";
+import { WiHumidity } from "react-icons/wi";
+import { FaTemperatureHigh } from "react-icons/fa";
+import { BsWind, BsSpeedometer } from "react-icons/bs";
 
 //
 const FORECAST_QUERY = gql`
@@ -11,6 +14,7 @@ const FORECAST_QUERY = gql`
         temp
         humidity
         feels_like
+        pressure
       }
       weather {
         main
@@ -76,10 +80,12 @@ const Forecast = ({ cityName, setShowForecast }) => {
         </div>
         <div className="details-wrapper">
           <div className="detail-box">
+            <WiHumidity className="detail-icon" />
             <p>humidity</p>
             <h4>{main.humidity} %</h4>
           </div>
           <div className="detail-box">
+            <FaTemperatureHigh className="detail-icon" />
             <p>Feels like</p>
             <h4>
               {Math.floor(main["feels_like"])} {"\u00b0"}
@@ -87,12 +93,14 @@ const Forecast = ({ cityName, setShowForecast }) => {
           </div>
 
           <div className="detail-box">
-            <p>Humidity</p>
-            <h4>{main.humidity} %</h4>
-          </div>
-          <div className="detail-box">
+            <BsWind className="detail-icon" />
             <p>Wind</p>
             <h4>{wind.speed} m/s</h4>
+          </div>
+          <div className="detail-box">
+            <BsSpeedometer className="detail-icon" />
+            <p>Pressure</p>
+            <h4>{main.pressure} hPa</h4>
           </div>
         </div>
       </div>
