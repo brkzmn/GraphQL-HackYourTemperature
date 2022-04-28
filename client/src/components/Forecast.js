@@ -10,6 +10,7 @@ const FORECAST_QUERY = gql`
       main {
         temp
         humidity
+        feels_like
       }
       weather {
         main
@@ -50,23 +51,50 @@ const Forecast = ({ cityName, setShowForecast }) => {
       day: "numeric",
     });
     console.log(currentDate);
+    console.log(main);
 
     return (
       <div className={`forecast-container ${main.temp > 16 ? "warm" : "cold"}`}>
-        <h1>Forecast</h1>
-        <time className="current-time">{currentDate}</time>
+        <div className="degree-wrapper">
+          <time className="current-time">{currentDate}</time>
 
-        <h2>
-          Weather in {data.CityWeather.name} {main.temp}
-          {"\u00b0"}
-        </h2>
-        <h4>humidity {main.humidity} %</h4>
-        <img
-          src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-          alt="weather-icon"
-        />
-        <h4>main {weather.main}</h4>
-        <h4>description{weather.description}</h4>
+          <h4>
+            <img
+              className="weather-icon"
+              src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+              alt="weather-icon"
+            />
+            {weather.main}
+          </h4>
+          <span>{weather.description}</span>
+          <h2>{data.CityWeather.name}</h2>
+          <h1>
+            {" "}
+            {Math.floor(main.temp)}
+            {"\u00b0"}
+          </h1>
+        </div>
+        <div className="details-wrapper">
+          <div className="detail-box">
+            <p>humidity</p>
+            <h4>{main.humidity} %</h4>
+          </div>
+          <div className="detail-box">
+            <p>Feels like</p>
+            <h4>
+              {Math.floor(main["feels_like"])} {"\u00b0"}
+            </h4>
+          </div>
+
+          <div className="detail-box">
+            <p>Humidity</p>
+            <h4>{main.humidity} %</h4>
+          </div>
+          <div className="detail-box">
+            <p>Wind</p>
+            <h4>{wind.speed} m/s</h4>
+          </div>
+        </div>
       </div>
     );
   }

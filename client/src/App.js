@@ -25,19 +25,22 @@ function App() {
           <h1 className="logo-title">HackYourTemperature-GraphQL</h1>
           <GrGraphQl className="logo-icon" />
         </div>
+        <div className="weather-container">
+          <div
+            className={`row input-container ${showForecast ? "up" : "down"}`}
+          >
+            <Input
+              cityName={cityName}
+              setCityName={setCityName}
+              setShowForecast={setShowForecast}
+            />
+            <Button setShowForecast={setShowForecast} />
+          </div>
 
-        <div className={`row input-container ${showForecast ? "up" : "down"}`}>
-          <Input
-            cityName={cityName}
-            setCityName={setCityName}
-            setShowForecast={setShowForecast}
-          />
-          <Button setShowForecast={setShowForecast} />
+          {showForecast && (
+            <Forecast cityName={cityName} setShowForecast={setShowForecast} />
+          )}
         </div>
-
-        {showForecast && (
-          <Forecast cityName={cityName} setShowForecast={setShowForecast} />
-        )}
       </ApolloProvider>
     </div>
   );

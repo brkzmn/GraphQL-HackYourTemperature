@@ -31,6 +31,7 @@ const mainType = new GraphQLObjectType({
   fields: () => ({
     temp: { type: GraphQLFloat },
     humidity: { type: GraphQLInt },
+    feels_like: { type: GraphQLFloat },
   }),
 });
 
