@@ -8,9 +8,10 @@ import {
   GraphQLFloat,
 } from "graphql";
 import fetch from "node-fetch";
-import config from "./config/index.js";
+import dotenv from "dotenv";
 
-const { API_KEY } = config;
+dotenv.config();
+const API_KEY = process.env.API_KEY;
 
 const windType = new GraphQLObjectType({
   name: "wind",
