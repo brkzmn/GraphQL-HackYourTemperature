@@ -11,7 +11,7 @@ import { useState } from "react";
 // import { set } from "express/lib/application";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
+  uri: "/graphql",
   cache: new InMemoryCache(),
 });
 

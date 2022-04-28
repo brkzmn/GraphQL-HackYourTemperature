@@ -8,8 +8,10 @@ import {
   GraphQLFloat,
 } from "graphql";
 import fetch from "node-fetch";
+import config from "./config";
 
-// `https://api.openweathermap.org/data/2.5/weather?q=${}&units=metric&APPID=68b7cb8df654d99aa72ed9a77bd90cad`
+const { API_KEY } = config;
+
 const windType = new GraphQLObjectType({
   name: "wind",
   fields: () => ({
@@ -57,7 +59,7 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve: async (parentValue, args) => {
         const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${args.name}&units=metric&APPID=68b7cb8df654d99aa72ed9a77bd90cad`
+          `https://api.openweathermap.org/data/2.5/weather?q=${args.name}&units=metric&APPID=${API_KEY}`
         );
         return res.json();
       },
